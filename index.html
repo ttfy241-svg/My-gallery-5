@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Photo Slider</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      display:flex;  
+      justify-content:center;  
+      align-items:center;  
+      height:100vh;  
+      background:#111;
+      font-family: Arial, sans-serif;
+    }
+
+    .slider {
+      width: 90%;
+      max-width: 800px;
+      height: 480px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+    }
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* পুরো ছবি দেখাবে */
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 0;
+      border-radius: 0 0 15px 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider">
+    <div class="slide active">
+      <img src="photo1.jpeg" alt="Photo1">
+      <div class="caption">Photo1</div>
+    </div>
+    <div class="slide">
+      <img src="photo2.jpeg" alt="Photo2">
+      <div class="caption">Photo2</div>
+    </div>
+    <div class="slide">
+      <img src="photo3.jpeg" alt="Photo3">
+      <div class="caption">Photo3</div>
+    </div>
+    <div class="slide">
+      <img src="photo4.jpg" alt="Photo4">
+      <div class="caption">Photo4</div>
+    </div>
+    <div class="slide">
+      <img src="photo5.jpeg" alt="Photo5">
+      <div class="caption">Photo5</div>
+    </div>
+  </div>
+
+  <script>
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 2000); // প্রতি 2 সেকেন্ডে ছবি বদলাবে
+  </script>
+
+</body>
+</html>
